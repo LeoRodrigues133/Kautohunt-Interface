@@ -42,10 +42,11 @@
             this.lblMaxHpChar = new System.Windows.Forms.Label();
             this.cmbMapa = new System.Windows.Forms.ComboBox();
             this.chkListMobs = new System.Windows.Forms.CheckedListBox();
+            this.btnSelecionarPasta = new System.Windows.Forms.Button();
             this.btnAdicionar = new System.Windows.Forms.Button();
             this.btnRemover = new System.Windows.Forms.Button();
-            this.btnLimpar = new System.Windows.Forms.Button();
-            this.btnSelecionarPasta = new System.Windows.Forms.Button();
+            this.listCacando = new System.Windows.Forms.ListBox();
+            this.btnIniciar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -190,35 +191,8 @@
             this.chkListMobs.FormattingEnabled = true;
             this.chkListMobs.Location = new System.Drawing.Point(12, 136);
             this.chkListMobs.Name = "chkListMobs";
-            this.chkListMobs.Size = new System.Drawing.Size(193, 94);
+            this.chkListMobs.Size = new System.Drawing.Size(135, 94);
             this.chkListMobs.TabIndex = 7;
-            // 
-            // btnAdicionar
-            // 
-            this.btnAdicionar.Location = new System.Drawing.Point(211, 136);
-            this.btnAdicionar.Name = "btnAdicionar";
-            this.btnAdicionar.Size = new System.Drawing.Size(83, 21);
-            this.btnAdicionar.TabIndex = 8;
-            this.btnAdicionar.Text = "Adicionar";
-            this.btnAdicionar.UseVisualStyleBackColor = true;
-            // 
-            // btnRemover
-            // 
-            this.btnRemover.Location = new System.Drawing.Point(211, 163);
-            this.btnRemover.Name = "btnRemover";
-            this.btnRemover.Size = new System.Drawing.Size(83, 21);
-            this.btnRemover.TabIndex = 8;
-            this.btnRemover.Text = "Remover";
-            this.btnRemover.UseVisualStyleBackColor = true;
-            // 
-            // btnLimpar
-            // 
-            this.btnLimpar.Location = new System.Drawing.Point(211, 199);
-            this.btnLimpar.Name = "btnLimpar";
-            this.btnLimpar.Size = new System.Drawing.Size(83, 21);
-            this.btnLimpar.TabIndex = 8;
-            this.btnLimpar.Text = "Limpar";
-            this.btnLimpar.UseVisualStyleBackColor = true;
             // 
             // btnSelecionarPasta
             // 
@@ -230,15 +204,54 @@
             this.btnSelecionarPasta.UseVisualStyleBackColor = true;
             this.btnSelecionarPasta.Click += new System.EventHandler(this.btnSelecionarPasta_Click);
             // 
+            // btnAdicionar
+            // 
+            this.btnAdicionar.Location = new System.Drawing.Point(12, 236);
+            this.btnAdicionar.Name = "btnAdicionar";
+            this.btnAdicionar.Size = new System.Drawing.Size(89, 38);
+            this.btnAdicionar.TabIndex = 8;
+            this.btnAdicionar.Text = "Adicionar";
+            this.btnAdicionar.UseVisualStyleBackColor = true;
+            this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
+            // 
+            // btnRemover
+            // 
+            this.btnRemover.Location = new System.Drawing.Point(196, 236);
+            this.btnRemover.Name = "btnRemover";
+            this.btnRemover.Size = new System.Drawing.Size(98, 38);
+            this.btnRemover.TabIndex = 8;
+            this.btnRemover.Text = "Remover";
+            this.btnRemover.UseVisualStyleBackColor = true;
+            this.btnRemover.Click += new System.EventHandler(this.btnRemover_Click);
+            // 
+            // listCacando
+            // 
+            this.listCacando.FormattingEnabled = true;
+            this.listCacando.Location = new System.Drawing.Point(159, 135);
+            this.listCacando.Name = "listCacando";
+            this.listCacando.Size = new System.Drawing.Size(135, 95);
+            this.listCacando.TabIndex = 9;
+            // 
+            // btnIniciar
+            // 
+            this.btnIniciar.Location = new System.Drawing.Point(107, 236);
+            this.btnIniciar.Name = "btnIniciar";
+            this.btnIniciar.Size = new System.Drawing.Size(83, 38);
+            this.btnIniciar.TabIndex = 10;
+            this.btnIniciar.Text = "Iniciar";
+            this.btnIniciar.UseVisualStyleBackColor = true;
+            this.btnIniciar.Click += new System.EventHandler(this.btnIniciar_Click);
+            // 
             // TelaPrincipalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(306, 586);
-            this.Controls.Add(this.btnLimpar);
+            this.Controls.Add(this.btnIniciar);
+            this.Controls.Add(this.listCacando);
             this.Controls.Add(this.btnRemover);
-            this.Controls.Add(this.btnSelecionarPasta);
             this.Controls.Add(this.btnAdicionar);
+            this.Controls.Add(this.btnSelecionarPasta);
             this.Controls.Add(this.chkListMobs);
             this.Controls.Add(this.cmbMapa);
             this.Controls.Add(this.groupBox1);
@@ -270,10 +283,11 @@
         private System.Windows.Forms.Label lblMaxHpChar;
         private System.Windows.Forms.ComboBox cmbMapa;
         private System.Windows.Forms.CheckedListBox chkListMobs;
+        private System.Windows.Forms.Button btnSelecionarPasta;
         private System.Windows.Forms.Button btnAdicionar;
         private System.Windows.Forms.Button btnRemover;
-        private System.Windows.Forms.Button btnLimpar;
-        private System.Windows.Forms.Button btnSelecionarPasta;
+        private System.Windows.Forms.ListBox listCacando;
+        private System.Windows.Forms.Button btnIniciar;
     }
 }
 

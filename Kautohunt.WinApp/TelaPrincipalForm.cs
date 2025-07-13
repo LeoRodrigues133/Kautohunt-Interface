@@ -12,10 +12,12 @@ namespace Kautohunt.WinApp
     public partial class TelaPrincipalForm : Form
     {
         private System.Net.Http.HttpClient httpClient = new System.Net.Http.HttpClient();
-        private List<ClientDTO> clients;
-        public static string pastaDeMapas;
-        public static string pastaDeZipMap;
-        private static string pastaDoScript;
+        private List<ClientDTO> _clients;
+        public static string _pastaDeMapas;
+        public static string _pastaDeZipMap;
+        private static string _pastaDoScript;
+        public static List<string> _mobSelecionado = new List<string>();
+        public static string _mapaSelecionado;
 
         public TelaPrincipalForm()
         {
@@ -76,17 +78,17 @@ namespace Kautohunt.WinApp
 
         private async Task StartUpdate()
         {
-            clients = new List<ClientDTO>();
+            _clients = new List<ClientDTO>();
 
             try
             {
                 string remoteServersRaw = await httpClient.GetStringAsync("https://storage.googleapis.com/4rtools/supported_servers.json");
-                clients.AddRange(JsonConvert.DeserializeObject<List<ClientDTO>>(remoteServersRaw));
+                _clients.AddRange(JsonConvert.DeserializeObject<List<ClientDTO>>(remoteServersRaw));
 
             }
             finally
             {
-                foreach (ClientDTO clientDTO in clients)
+                foreach (ClientDTO clientDTO in _clients)
                     ClientListSingleton.AddClient(new Client(clientDTO));
             }
         }
@@ -158,14 +160,14 @@ namespace Kautohunt.WinApp
             {
                 cmbMapa.Items.Clear();
 
-                pastaDoScript = Path.GetDirectoryName(FileFolder.FileName);
+                _pastaDoScript = Path.GetDirectoryName(FileFolder.FileName);
 
-                pastaDeZipMap = Path.Combine(pastaDoScript, "assets", "zimap");
+                _pastaDeZipMap = Path.Combine(_pastaDoScript, "assets", "zimap");
 
-                pastaDeMapas = Path.Combine(pastaDoScript, "assets", "Maps");
+                _pastaDeMapas = Path.Combine(_pastaDoScript, "assets", "Maps");
             }
 
-            foreach (var map in MapLoader.ListarMapas(pastaDeZipMap))
+            foreach (var map in MapLoader.ListarMapas(_pastaDeZipMap))
             {
                 cmbMapa.Items.Add(map);
             }
@@ -175,13 +177,39 @@ namespace Kautohunt.WinApp
         private void cmbMapa_SelectedIndexChanged(object sender, EventArgs e)
         {
             chkListMobs.Items.Clear();
-
+            _mapaSelecionado = cmbMapa.SelectedItem.ToString();
             string mapaSelecionado = '/' + cmbMapa.SelectedItem.ToString();
 
-            foreach (var mob in MapLoader.ListarMobs(pastaDeMapas, mapaSelecionado))
+            foreach (var mob in MapLoader.ListarMobs(_pastaDeMapas, mapaSelecionado))
             {
                 chkListMobs.Items.Add(mob);
             }
+        }
+
+        private void btnAdicionar_Click(object sender, EventArgs e)
+        {
+            foreach (string mob in chkListMobs.CheckedItems)
+                if (!listCacando.Items.Contains(mob))
+                {
+                    _mobSelecionado.Add(mob);
+                    listCacando.Items.Add(mob);
+                }
+
+
+        }
+
+        private void btnRemover_Click(object sender, EventArgs e)
+        {
+            foreach (string mob in chkListMobs.CheckedItems)
+            {
+                _mobSelecionado.Remove(mob);
+                listCacando.Items.Remove(mob);
+            }
+        }
+
+        private void btnIniciar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
