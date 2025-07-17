@@ -85,7 +85,7 @@ public class Client
     public Process process { get; }
 
     public string processName { get; private set; }
-    private ProcessMemoryReader PMR { get; set; }
+    private LeitorDeMemoriaDoProcesso PMR { get; set; }
     public int currentNameAddress { get; set; }
     public int currentHPBaseAddress { get; set; }
     private int statusBufferAddress { get; set; }
@@ -109,7 +109,7 @@ public class Client
 
     public Client(string processName)
     {
-        PMR = new ProcessMemoryReader();
+        PMR = new LeitorDeMemoriaDoProcesso();
         string rawProcessName = processName.Split(new string[] { ".exe - " }, StringSplitOptions.None)[0];
         int choosenPID = int.Parse(processName.Split(new string[] { ".exe - " }, StringSplitOptions.None)[1]);
 

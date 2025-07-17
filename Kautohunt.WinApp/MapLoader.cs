@@ -6,7 +6,7 @@ using System.IO.Compression;
 
 namespace Kautohunt.WinApp
 {
-    public class MapLoader
+    public static class MapLoader
     {
         public static List<string> ListarMapas(string path)
         {
@@ -36,9 +36,9 @@ namespace Kautohunt.WinApp
             return mapas;
         }
 
-        public (string modelo, string nomes) CarregarMapa(string PathZip, string dest)
+        public static (string modelo, string nomes) CarregarMapa(string PathZip, string mapa, string dest)
         {
-            string nomeBase = Path.GetFileNameWithoutExtension(PathZip);
+            string nomeBase = Path.GetFileNameWithoutExtension(mapa);
 
             Directory.CreateDirectory(dest);
 
@@ -47,10 +47,13 @@ namespace Kautohunt.WinApp
             string nomesDestino = Path.Combine(dest, $"{nomeBase}.txt");
 
             if (modeloDestino == ".h5" || nomesDestino == ".txt")
+            {
+                MessageBox.Show(modeloDestino, nomesDestino);
                 return (null, null);
+            }
             try
             {
-                using (ZipArchive zip = ZipFile.OpenRead(PathZip))
+                using (ZipArchive zip = ZipFile.OpenRead($"{PathZip}.zip"))
                 {
                     foreach (ZipArchiveEntry entry in zip.Entries)
                     {

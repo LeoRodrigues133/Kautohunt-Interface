@@ -4,9 +4,9 @@ using System.Diagnostics;
 
 namespace Kautohunt.WinApp
 {
-    internal class ProcessMemoryReader
+    internal class LeitorDeMemoriaDoProcesso
     {
-        private class MemoryApi
+        private class ApiDaMemoria
         {
 
             [Flags]
@@ -48,22 +48,22 @@ namespace Kautohunt.WinApp
         }
         public void OpenProcess()
         {
-            MemoryApi.ProcessAccessType dwDesiredAccess = MemoryApi.ProcessAccessType.PROCESS_VM_OPERATION | MemoryApi.ProcessAccessType.PROCESS_VM_READ | MemoryApi.ProcessAccessType.PROCESS_VM_WRITE;
-            this.m_hProcess = MemoryApi.OpenProcess((uint)dwDesiredAccess, 1, (uint)this.m_ReadProcess.Id);
+            ApiDaMemoria.ProcessAccessType dwDesiredAccess = ApiDaMemoria.ProcessAccessType.PROCESS_VM_OPERATION | ApiDaMemoria.ProcessAccessType.PROCESS_VM_READ | ApiDaMemoria.ProcessAccessType.PROCESS_VM_WRITE;
+            this.m_hProcess = ApiDaMemoria.OpenProcess((uint)dwDesiredAccess, 1, (uint)this.m_ReadProcess.Id);
         }
 
         public byte[] ReadProcessMemory(IntPtr MemoryAddress, uint bytesToRead, out int bytesRead)
         {
             byte[] array = new byte[bytesToRead];
             IntPtr intPtr;
-            MemoryApi.ReadProcessMemory(this.m_hProcess, MemoryAddress, array, bytesToRead, out intPtr);
+            ApiDaMemoria.ReadProcessMemory(this.m_hProcess, MemoryAddress, array, bytesToRead, out intPtr);
             bytesRead = intPtr.ToInt32();
             return array;
         }
         public void WriteProcessMemory(IntPtr MemoryAddress, byte[] bytesToWrite, out int bytesWritten)
         {
             IntPtr intPtr;
-            ProcessMemoryReader.MemoryApi.WriteProcessMemory(this.m_hProcess, MemoryAddress, bytesToWrite, (uint)bytesToWrite.Length, out intPtr);
+            LeitorDeMemoriaDoProcesso.ApiDaMemoria.WriteProcessMemory(this.m_hProcess, MemoryAddress, bytesToWrite, (uint)bytesToWrite.Length, out intPtr);
             bytesWritten = intPtr.ToInt32();
         }
 

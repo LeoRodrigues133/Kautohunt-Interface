@@ -1,4 +1,7 @@
-﻿namespace Kautohunt.WinApp
+﻿using Microsoft.Win32;
+using System.Windows.Forms;
+
+namespace Kautohunt.WinApp
 {
     partial class TelaPrincipalForm
     {
@@ -47,6 +50,11 @@
             this.btnRemover = new System.Windows.Forms.Button();
             this.listCacando = new System.Windows.Forms.ListBox();
             this.btnIniciar = new System.Windows.Forms.Button();
+            this.rtxLog = new System.Windows.Forms.RichTextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,7 +73,7 @@
             this.cmbProcessos.FormattingEnabled = true;
             this.cmbProcessos.Location = new System.Drawing.Point(12, 38);
             this.cmbProcessos.Name = "cmbProcessos";
-            this.cmbProcessos.Size = new System.Drawing.Size(121, 21);
+            this.cmbProcessos.Size = new System.Drawing.Size(193, 21);
             this.cmbProcessos.TabIndex = 1;
             this.cmbProcessos.SelectedIndexChanged += new System.EventHandler(this.cmbProcessos_SelectedIndexChanged);
             // 
@@ -91,10 +99,11 @@
             // 
             // btnAtualizar
             // 
-            this.btnAtualizar.Location = new System.Drawing.Point(135, 38);
+            this.btnAtualizar.Location = new System.Drawing.Point(211, 37);
             this.btnAtualizar.Name = "btnAtualizar";
-            this.btnAtualizar.Size = new System.Drawing.Size(20, 20);
+            this.btnAtualizar.Size = new System.Drawing.Size(83, 22);
             this.btnAtualizar.TabIndex = 4;
+            this.btnAtualizar.Text = "Recarregar";
             this.btnAtualizar.UseVisualStyleBackColor = true;
             this.btnAtualizar.Click += new System.EventHandler(this.btnAtualizar_Click);
             // 
@@ -112,7 +121,7 @@
             // 
             this.lblHpChar.AutoSize = true;
             this.lblHpChar.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHpChar.Location = new System.Drawing.Point(41, 36);
+            this.lblHpChar.Location = new System.Drawing.Point(57, 36);
             this.lblHpChar.Name = "lblHpChar";
             this.lblHpChar.Size = new System.Drawing.Size(16, 17);
             this.lblHpChar.TabIndex = 3;
@@ -132,7 +141,7 @@
             // 
             this.lblSpChar.AutoSize = true;
             this.lblSpChar.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSpChar.Location = new System.Drawing.Point(41, 53);
+            this.lblSpChar.Location = new System.Drawing.Point(57, 53);
             this.lblSpChar.Name = "lblSpChar";
             this.lblSpChar.Size = new System.Drawing.Size(16, 17);
             this.lblSpChar.TabIndex = 3;
@@ -148,18 +157,18 @@
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(161, 16);
+            this.groupBox1.Location = new System.Drawing.Point(12, 74);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(133, 76);
+            this.groupBox1.Size = new System.Drawing.Size(282, 102);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Personagem";
+            this.groupBox1.Text = "Informações do Personagem";
             // 
             // lblMaxSpChar
             // 
             this.lblMaxSpChar.AutoSize = true;
             this.lblMaxSpChar.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMaxSpChar.Location = new System.Drawing.Point(80, 53);
+            this.lblMaxSpChar.Location = new System.Drawing.Point(119, 53);
             this.lblMaxSpChar.Name = "lblMaxSpChar";
             this.lblMaxSpChar.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lblMaxSpChar.Size = new System.Drawing.Size(30, 17);
@@ -170,7 +179,7 @@
             // 
             this.lblMaxHpChar.AutoSize = true;
             this.lblMaxHpChar.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMaxHpChar.Location = new System.Drawing.Point(80, 36);
+            this.lblMaxHpChar.Location = new System.Drawing.Point(119, 36);
             this.lblMaxHpChar.Name = "lblMaxHpChar";
             this.lblMaxHpChar.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lblMaxHpChar.Size = new System.Drawing.Size(30, 17);
@@ -180,7 +189,7 @@
             // cmbMapa
             // 
             this.cmbMapa.FormattingEnabled = true;
-            this.cmbMapa.Location = new System.Drawing.Point(12, 98);
+            this.cmbMapa.Location = new System.Drawing.Point(12, 229);
             this.cmbMapa.Name = "cmbMapa";
             this.cmbMapa.Size = new System.Drawing.Size(193, 21);
             this.cmbMapa.TabIndex = 6;
@@ -189,14 +198,14 @@
             // chkListMobs
             // 
             this.chkListMobs.FormattingEnabled = true;
-            this.chkListMobs.Location = new System.Drawing.Point(12, 136);
+            this.chkListMobs.Location = new System.Drawing.Point(12, 288);
             this.chkListMobs.Name = "chkListMobs";
-            this.chkListMobs.Size = new System.Drawing.Size(135, 94);
+            this.chkListMobs.Size = new System.Drawing.Size(130, 124);
             this.chkListMobs.TabIndex = 7;
             // 
             // btnSelecionarPasta
             // 
-            this.btnSelecionarPasta.Location = new System.Drawing.Point(211, 97);
+            this.btnSelecionarPasta.Location = new System.Drawing.Point(211, 228);
             this.btnSelecionarPasta.Name = "btnSelecionarPasta";
             this.btnSelecionarPasta.Size = new System.Drawing.Size(83, 21);
             this.btnSelecionarPasta.TabIndex = 8;
@@ -206,9 +215,9 @@
             // 
             // btnAdicionar
             // 
-            this.btnAdicionar.Location = new System.Drawing.Point(12, 236);
+            this.btnAdicionar.Location = new System.Drawing.Point(12, 418);
             this.btnAdicionar.Name = "btnAdicionar";
-            this.btnAdicionar.Size = new System.Drawing.Size(89, 38);
+            this.btnAdicionar.Size = new System.Drawing.Size(130, 38);
             this.btnAdicionar.TabIndex = 8;
             this.btnAdicionar.Text = "Adicionar";
             this.btnAdicionar.UseVisualStyleBackColor = true;
@@ -216,9 +225,9 @@
             // 
             // btnRemover
             // 
-            this.btnRemover.Location = new System.Drawing.Point(196, 236);
+            this.btnRemover.Location = new System.Drawing.Point(164, 418);
             this.btnRemover.Name = "btnRemover";
-            this.btnRemover.Size = new System.Drawing.Size(98, 38);
+            this.btnRemover.Size = new System.Drawing.Size(130, 38);
             this.btnRemover.TabIndex = 8;
             this.btnRemover.Text = "Remover";
             this.btnRemover.UseVisualStyleBackColor = true;
@@ -227,26 +236,76 @@
             // listCacando
             // 
             this.listCacando.FormattingEnabled = true;
-            this.listCacando.Location = new System.Drawing.Point(159, 135);
+            this.listCacando.Location = new System.Drawing.Point(164, 291);
             this.listCacando.Name = "listCacando";
-            this.listCacando.Size = new System.Drawing.Size(135, 95);
+            this.listCacando.Size = new System.Drawing.Size(130, 121);
             this.listCacando.TabIndex = 9;
             // 
             // btnIniciar
             // 
-            this.btnIniciar.Location = new System.Drawing.Point(107, 236);
+            this.btnIniciar.Location = new System.Drawing.Point(12, 477);
             this.btnIniciar.Name = "btnIniciar";
-            this.btnIniciar.Size = new System.Drawing.Size(83, 38);
+            this.btnIniciar.Size = new System.Drawing.Size(282, 38);
             this.btnIniciar.TabIndex = 10;
-            this.btnIniciar.Text = "Iniciar";
+            this.btnIniciar.Text = "Iniciar Caça";
             this.btnIniciar.UseVisualStyleBackColor = true;
             this.btnIniciar.Click += new System.EventHandler(this.btnIniciar_Click);
+            // 
+            // rtxLog
+            // 
+            this.rtxLog.Location = new System.Drawing.Point(12, 559);
+            this.rtxLog.Name = "rtxLog";
+            this.rtxLog.ReadOnly = true;
+            this.rtxLog.Size = new System.Drawing.Size(282, 170);
+            this.rtxLog.TabIndex = 11;
+            this.rtxLog.Text = "";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(12, 537);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(37, 19);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Log:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(8, 207);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(116, 19);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Pasta do Script:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(8, 266);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(134, 19);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "Mobs Detectáveis:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(160, 266);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(71, 19);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Caçando:";
             // 
             // TelaPrincipalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(306, 586);
+            this.ClientSize = new System.Drawing.Size(306, 741);
+            this.Controls.Add(this.rtxLog);
             this.Controls.Add(this.btnIniciar);
             this.Controls.Add(this.listCacando);
             this.Controls.Add(this.btnRemover);
@@ -257,15 +316,24 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnAtualizar);
             this.Controls.Add(this.cmbProcessos);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label1);
             this.Name = "TelaPrincipalForm";
-            this.Text = "Kautohunt";
+            this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Kautohunt.Interface";
+            this.TopMost = true;
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
+
+
 
         #endregion
 
@@ -288,6 +356,11 @@
         private System.Windows.Forms.Button btnRemover;
         private System.Windows.Forms.ListBox listCacando;
         private System.Windows.Forms.Button btnIniciar;
+        private RichTextBox rtxLog;
+        private Label label4;
+        private Label label6;
+        private Label label7;
+        private Label label8;
     }
 }
 
