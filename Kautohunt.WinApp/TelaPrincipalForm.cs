@@ -10,6 +10,8 @@ using Python.Runtime;
 using System.Linq;
 namespace Kautohunt.WinApp
 {
+
+
     public partial class TelaPrincipalForm : Form
     {
         public System.Windows.Forms.Timer logTimer;
@@ -36,14 +38,14 @@ namespace Kautohunt.WinApp
 
             InitializeAsync();
 
-            Runtime.PythonDLL = @"C:\Users\Leo_Rodrigues\AppData\Local\Programs\Python\Python310\python310.dll";
-            PythonEngine.PythonHome = @"C:\Users\Leo_Rodrigues\AppData\Local\Programs\Python\Python310";
+            Runtime.PythonDLL = @"C:\Users\Leo_Rodrigues\AppData\Local\Programs\Python\Python310\python310.dll"; // <-- aqui cola o caminha do seu python 
+            PythonEngine.PythonHome = @"C:\Users\Leo_Rodrigues\AppData\Local\Programs\Python\Python310";         //      --> deve utilizar o 3.10 <--
 
             string pythonPath = string.Join(";", new[]
             {
-                    @"C:\Users\Leo_Rodrigues\source\repos\Python\KAutoHunt\Py310\Lib",
-                    @"C:\Users\Leo_Rodrigues\source\repos\Python\KAutoHunt\Py310\Lib\site-packages",
-                    @"C:\Users\Leo_Rodrigues\source\repos\Python\KAutoHunt"
+                    $"{_pastaDoScript}\\Py310\\Lib",
+                    $"{_pastaDoScript}\\Py310\\Lib\\site-packages",
+                    $"{_pastaDoScript}"
                 });
             Environment.SetEnvironmentVariable("PYTHONPATH", pythonPath);
 
@@ -56,7 +58,7 @@ namespace Kautohunt.WinApp
             using (Py.GIL())
             {
                 dynamic sys = Py.Import("sys");
-                sys.path.append(@"C:\\Users\\Leo_Rodrigues\\source\\repos\\Python\\KAutoHunt");
+                sys.path.append(_pastaDoScript);
 
                 dynamic redirector_module = Py.Import("Utils.output_redirector");
                 dynamic redirector = redirector_module.redirector;
