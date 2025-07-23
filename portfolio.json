@@ -2,5 +2,5 @@
   "title": "KAutuHunt Inteface",
   "description": "Interface para integração com scripts Python que utilizam modelos treinados (.h5) para reconhecimento de objetos e automação de ações. Projeto em desenvolvimento focado em visão computacional e automação de processos.(Famoso bot de joguinho)",
   "gif": "https://raw.githubusercontent.com/LeoRodrigues133/Kautohunt-Interface/refs/heads/master/Kautohunt.WinApp/docs/img/Apresentacao.gif",
-  "lastCommit": "Implementação isolada, funcional"
+  "lastCommit": "Implementação isolada, integração funcional com script python"
 }
